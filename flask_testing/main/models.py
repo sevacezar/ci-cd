@@ -3,7 +3,7 @@ from sqlalchemy.ext.associationproxy import association_proxy
 from .app import db
 
 
-class Client(db.Model):
+class Client(db.Model):  # type: ignore
     __tablename__ = "clients"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -22,7 +22,7 @@ class Client(db.Model):
         return {item.name: getattr(self, item.name) for item in self.__table__.columns}
 
 
-class Parking(db.Model):
+class Parking(db.Model):  # type: ignore
     __tablename__ = "parkings"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -41,7 +41,7 @@ class Parking(db.Model):
         return {item.name: getattr(self, item.name) for item in self.__table__.columns}
 
 
-class ClientParking(db.Model):
+class ClientParking(db.Model):  # type: ignore
     __tablename__ = "client_parkings"
 
     id = db.Column(db.Integer, primary_key=True)
