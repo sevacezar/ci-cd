@@ -23,10 +23,7 @@ def app():
             car_number="car_number",
         )
         parking = Parking(
-            address="address",
-            opened=True,
-            count_places=10,
-            count_available_places=10
+            address="address", opened=True, count_places=10, count_available_places=10
         )
         time_in = datetime.now()
         time_out = time_in + timedelta(hours=2)

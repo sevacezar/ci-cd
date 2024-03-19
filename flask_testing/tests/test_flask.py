@@ -48,8 +48,7 @@ def test_drive_in(client):
     client_id = 2
     parking_id = 2
     parking_client_data = {"client_id": client_id, "parking_id": parking_id}
-    count_available_places = get_parking_by_id_db(parking_id).\
-        count_available_places
+    count_available_places = get_parking_by_id_db(parking_id).count_available_places
 
     resp = client.post("/client_parkings", json=parking_client_data)
     parking = get_parking_by_id_db(parking_id)
@@ -64,8 +63,7 @@ def test_drive_out(client):
     client_id = 2
     parking_id = 2
     parking_client_data = {"client_id": client_id, "parking_id": parking_id}
-    count_available_places = get_parking_by_id_db(parking_id).\
-        count_available_places
+    count_available_places = get_parking_by_id_db(parking_id).count_available_places
 
     resp = client.delete("/client_parkings", json=parking_client_data)
     parking = get_parking_by_id_db(parking_id)

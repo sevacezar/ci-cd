@@ -98,9 +98,7 @@ def create_app():
         client_parking_schema = ClientParkingSchema()
         try:
             new_client_parking_dict = client_parking_schema.load(request.json)
-            client = get_client_by_id_db(
-                client_id=new_client_parking_dict["client_id"]
-            )
+            client = get_client_by_id_db(client_id=new_client_parking_dict["client_id"])
             parking = get_parking_by_id_db(
                 parking_id=new_client_parking_dict["parking_id"]
             )
@@ -137,17 +135,13 @@ def create_app():
         client_parking_schema = ClientParkingSchema()
         try:
             new_client_parking_dict = client_parking_schema.load(request.json)
-            new_client_parking = get_client_parking_by_ids_db(
-                **new_client_parking_dict
-            )
+            new_client_parking = get_client_parking_by_ids_db(**new_client_parking_dict)
             if not new_client_parking:
                 return jsonify(error="No entry"), 400
 
             if new_client_parking.time_out:
                 return (
-                    jsonify(
-                        error="There is no longer this car in the parking lot"
-                    ),
+                    jsonify(error="There is no longer this car in the parking lot"),
                     400,
                 )
 

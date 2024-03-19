@@ -12,17 +12,14 @@ class Client(db.Model):
     credit_card = db.Column(db.String(50))
     car_number = db.Column(db.String(10))
 
-    parking_associations = db.relationship("ClientParking",
-                                           back_populates="client")
-    parkings = association_proxy("parking_associations",
-                                 "parking")
+    parking_associations = db.relationship("ClientParking", back_populates="client")
+    parkings = association_proxy("parking_associations", "parking")
 
     def __repr__(self):
         return f"<Client {self.name} {self.surname}>"
 
     def to_json(self):
-        return {item.name: getattr(self, item.name)
-                for item in self.__table__.columns}
+        return {item.name: getattr(self, item.name) for item in self.__table__.columns}
 
 
 class Parking(db.Model):
@@ -34,17 +31,14 @@ class Parking(db.Model):
     count_places = db.Column(db.Integer, nullable=False)
     count_available_places = db.Column(db.Integer, nullable=False)
 
-    client_associations = db.relationship("ClientParking",
-                                          back_populates="parking")
-    clients = association_proxy("client_associations",
-                                "client")
+    client_associations = db.relationship("ClientParking", back_populates="parking")
+    clients = association_proxy("client_associations", "client")
 
     def __repr__(self):
         return f"<Parking on {self.address}>"
 
     def to_json(self):
-        return {item.name: getattr(self, item.name)
-                for item in self.__table__.columns}
+        return {item.name: getattr(self, item.name) for item in self.__table__.columns}
 
 
 class ClientParking(db.Model):
@@ -63,5 +57,4 @@ class ClientParking(db.Model):
         return f"<ClientParking {self.id}>"
 
     def to_json(self):
-        return {item.name: getattr(self, item.name)
-                for item in self.__table__.columns}
+        return {item.name: getattr(self, item.name) for item in self.__table__.columns}
