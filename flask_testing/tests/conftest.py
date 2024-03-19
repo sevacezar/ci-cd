@@ -1,8 +1,10 @@
 from datetime import datetime, timedelta
 
 import pytest
-from flask_testing.main.app import create_app, db as _db
-from flask_testing.main.models import Client, Parking, ClientParking
+
+from flask_testing.main.app import create_app
+from flask_testing.main.app import db as _db
+from flask_testing.main.models import Client, ClientParking, Parking
 
 
 # @pytest.fixture

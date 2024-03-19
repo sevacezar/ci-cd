@@ -6,14 +6,14 @@ from flask import Flask, jsonify, request
 from marshmallow import ValidationError
 
 from .database import db
+from .models import Client, ClientParking, Parking
+from .schemas import ClientParkingSchema, ClientSchema, ParkingSchema
 from .services import (
     get_all_clients_db,
     get_client_by_id_db,
-    get_parking_by_id_db,
     get_client_parking_by_ids_db,
+    get_parking_by_id_db,
 )
-from .schemas import ClientSchema, ParkingSchema, ClientParkingSchema
-from .models import Client, ClientParking, Parking
 
 # db = SQLAlchemy()
 

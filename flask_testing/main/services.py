@@ -1,6 +1,6 @@
-from .models import db, Client, ClientParking, Parking
-
 from typing import List, Optional
+
+from .models import Client, ClientParking, Parking, db
 
 
 def get_all_clients_db() -> List[Client]:
