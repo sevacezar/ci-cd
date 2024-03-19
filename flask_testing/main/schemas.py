@@ -1,4 +1,4 @@
-from marshmallow import ValidationError, fields, validate, validates
+from marshmallow import fields, validate
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
 from .models import Client, ClientParking, Parking

@@ -1,4 +1,3 @@
-from flask_testing.main.models import Client, ClientParking, Parking
 from flask_testing.main.services import get_all_clients_db, get_all_parkings_db
 
 from .factories import ClientFactory, ParkingFactory

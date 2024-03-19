@@ -2,7 +2,6 @@ import random
 import string
 
 import factory
-import factory.fuzzy as fuzzy
 
 from flask_testing.main.app import db
 from flask_testing.main.models import Client, Parking

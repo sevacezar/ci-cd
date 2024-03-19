@@ -61,7 +61,13 @@ def create_app():
             return jsonify(validation_error=exc.messages), 400
 
         """
-        curl -H "Content-Type: application/json" -X POST -d '{"name": "Andrey", "surname": "Antonov", "credit_card": "XXXXXX", "car_number": "K905EO72S"}' http://127.0.0.1:5000/clients
+        curl -H "Content-Type: application/json"
+        -X POST
+        -d '{"name": "Andrey",
+        "surname": "Antonov",
+        "credit_card": "XXXXXX",
+        "car_number": "K905EO72S"}'
+        http://127.0.0.1:5000/clients
         """
 
     @app.route("/parkings", methods=["POST"])
@@ -78,7 +84,12 @@ def create_app():
             return jsonify(validation_error=exc.messages), 400
 
         """
-          curl -X POST -H "Content-Type: application/json" -d '{"address": "Respubliki 8", "opened": true, "count_places": 10, "count_available_places": 10}' http://127.0.0.1:5000/parkings
+          curl -X POST -H "Content-Type: application/json"
+          -d '{"address": "Respubliki 8",
+          "opened": true,
+          "count_places": 10,
+          "count_available_places": 10}'
+          http://127.0.0.1:5000/parkings
         """
 
     @app.route("/client_parkings", methods=["POST"])
@@ -87,7 +98,9 @@ def create_app():
         client_parking_schema = ClientParkingSchema()
         try:
             new_client_parking_dict = client_parking_schema.load(request.json)
-            client = get_client_by_id_db(client_id=new_client_parking_dict["client_id"])
+            client = get_client_by_id_db(
+                client_id=new_client_parking_dict["client_id"]
+            )
             parking = get_parking_by_id_db(
                 parking_id=new_client_parking_dict["parking_id"]
             )
@@ -112,7 +125,10 @@ def create_app():
             return jsonify(validation_error=exc.messages), 400
 
         """
-          curl -X POST -H "Content-Type: application/json" -d '{"client_id": 1, "parking_id": 1}' http://127.0.0.1:5000/client_parkings
+          curl -X POST -H "Content-Type: application/json"
+          -d '{"client_id": 1,
+          "parking_id": 1}'
+          http://127.0.0.1:5000/client_parkings
         """
 
     @app.route("/client_parkings", methods=["DELETE"])
@@ -121,13 +137,17 @@ def create_app():
         client_parking_schema = ClientParkingSchema()
         try:
             new_client_parking_dict = client_parking_schema.load(request.json)
-            new_client_parking = get_client_parking_by_ids_db(**new_client_parking_dict)
+            new_client_parking = get_client_parking_by_ids_db(
+                **new_client_parking_dict
+            )
             if not new_client_parking:
                 return jsonify(error="No entry"), 400
 
             if new_client_parking.time_out:
                 return (
-                    jsonify(error="There is no longer this car in the parking lot"),
+                    jsonify(
+                        error="There is no longer this car in the parking lot"
+                    ),
                     400,
                 )
 
@@ -142,7 +162,10 @@ def create_app():
             return jsonify(validation_error=exc.messages), 400
 
         """
-                  curl -X DELETE -H "Content-Type: application/json" -d '{"client_id": 1, "parking_id": 1}' http://127.0.0.1:5000/client_parkings
+                  curl -X DELETE -H "Content-Type: application/json"
+                  -d '{"client_id": 1,
+                  "parking_id": 1}'
+                  http://127.0.0.1:5000/client_parkings
         """
 
     return app
