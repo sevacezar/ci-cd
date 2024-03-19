@@ -2,8 +2,8 @@ import random
 import string
 
 import factory
-from factory.faker import Faker
 from factory import LazyAttribute
+from factory.faker import Faker
 
 from flask_testing.main.app import db
 from flask_testing.main.models import Client, Parking
