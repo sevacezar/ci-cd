@@ -26,7 +26,9 @@ class ClientFactory(factory.alchemy.SQLAlchemyModelFactory):
             [str(random.randint(1000000000000000, 9999999999999999)), None]
         )
     )
-    car_number: LazyAttribute = factory.LazyAttribute(lambda o: _generate_random_text(9))
+    car_number: LazyAttribute = factory.LazyAttribute(
+        lambda o: _generate_random_text(9)
+    )
 
 
 class ParkingFactory(factory.alchemy.SQLAlchemyModelFactory):
