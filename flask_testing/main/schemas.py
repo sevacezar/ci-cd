@@ -3,7 +3,6 @@ from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 from .models import Client, Parking, ClientParking
 
 
-
 class ClientSchema(SQLAlchemyAutoSchema):
     class Meta:
         model = Client

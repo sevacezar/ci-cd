@@ -19,5 +19,11 @@ def get_parking_by_id_db(parking_id: int) -> Optional[Parking]:
     return db.session.query(Parking).filter_by(id=parking_id).one_or_none()
 
 
-def get_client_parking_by_ids_db(client_id: int, parking_id: int) -> Optional[ClientParking]:
-    return db.session.query(ClientParking).filter_by(client_id=client_id, parking_id=parking_id).one_or_none()
+def get_client_parking_by_ids_db(
+    client_id: int, parking_id: int
+) -> Optional[ClientParking]:
+    return (
+        db.session.query(ClientParking)
+        .filter_by(client_id=client_id, parking_id=parking_id)
+        .one_or_none()
+    )
